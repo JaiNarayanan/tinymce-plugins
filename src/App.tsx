@@ -11,8 +11,7 @@ const App = () => {
     //@ts-ignore
     tinymce.init({
       external_plugins: {
-        'to-markdown': 'https://cdn.jsdelivr.net/gh/JaiNarayanan/tinymce-plugins@plugin-testing/src/editor/plugins/plugin.min.js',
-        'example': 'https://cdn.jsdelivr.net/gh/JaiNarayanan/tinymce-plugins@plugin-testing/src/editor/plugins/plugin2.min.js'
+        'custom-dropdown': 'https://cdn.jsdelivr.net/gh/JaiNarayanan/tinymce-plugins@plugin-testing/src/editor/plugins/dropdown/plugin.min.js'
       },
       selector: '#tinymce-editor',
       height: '100vh',
@@ -22,7 +21,7 @@ const App = () => {
         "lists", "link", "image", "charmap", "preview", "anchor", "searchreplace", "visualblocks",
         "fullscreen", "insertdatetime", "media", "table", "help", "wordcount", "powerpaste", "save",
       ],	
-      toolbar:"undo redo print save to-markdown example",
+      toolbar:"undo redo print save example",
       toolbar_sticky: true,
       skin: "bootstrap",
       content_style: `
