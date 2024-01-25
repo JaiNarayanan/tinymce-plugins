@@ -11,7 +11,7 @@ const App = () => {
     //@ts-ignore
     tinymce.init({
       external_plugins: {
-        'to-markdown': '/src/editor/plugins/plugin.min.js'
+        'to-markdown': 'https://cdn.jsdelivr.net/gh/JaiNarayanan/tinymce-plugins/src/editor/plugins/plugin.min.js'
       },
       selector: '#tinymce-editor',
       height: '100vh',
@@ -21,7 +21,7 @@ const App = () => {
         "lists", "link", "image", "charmap", "preview", "anchor", "searchreplace", "visualblocks",
         "fullscreen", "insertdatetime", "media", "table", "help", "wordcount", "powerpaste", "save",
       ],	
-      toolbar:"undo redo print save | blocks fontfamily fontsize | bold italic underline forecolor backcolor | link image addcomment showcomments  | alignleft aligncenter alignright alignjustify lineheight | checklist bullist numlist indent outdent | removeformat",
+      toolbar:"undo redo print save to-markdown",
       toolbar_sticky: true,
       skin: "bootstrap",
       content_style: `
