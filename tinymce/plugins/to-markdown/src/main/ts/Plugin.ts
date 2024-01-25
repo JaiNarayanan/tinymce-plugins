@@ -12,8 +12,23 @@ var openDialog = function (editor) {
           type: 'input',
           name: 'title',
           label: 'Title'
+        },
+        {
+          type: 'input',
+          name: 'title',
+          label: 'Title'
+        },
+        {
+          type: 'input',
+          name: 'title',
+          label: 'Title'
+        },
+        {
+          type: 'input',
+          name: 'title',
+          label: 'Title'
         }
-      ]
+      ],
     },
     buttons: [
       {
@@ -28,6 +43,7 @@ var openDialog = function (editor) {
     ],
     onSubmit: function (api) {
       var data = api.getData();
+      console.log(data)
       /* Insert content when the window form is submitted */
       editor.insertContent('Title: ' + data.title);
       api.close();
@@ -37,7 +53,7 @@ var openDialog = function (editor) {
 
 const setup = (editor: Editor, url: string): void => {
   editor.ui.registry.addButton('example', {
-    text: 'My button',
+    text: 'Add Dropdown',
     onAction: function () {
       /* Open window */
       openDialog(editor);
@@ -46,5 +62,5 @@ const setup = (editor: Editor, url: string): void => {
 };
 
 export default (): void => {
-  tinymce.PluginManager.add('to-markdown', setup);
+  tinymce.PluginManager.add('custom-dropdown', setup);
 };
