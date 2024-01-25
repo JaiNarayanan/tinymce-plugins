@@ -14,7 +14,7 @@ var openDialog = function (editor) {
           label: 'Dropdown Title'
         },
         {
-          type: 'textbox',
+          type: 'textarea',
           name: 'content',
           label: 'Dropdown Content'
         }
@@ -35,7 +35,7 @@ var openDialog = function (editor) {
       var data = api.getData();
       console.log(data)
       /* Insert content when the window form is submitted */
-      editor.insertContent(`<details><summary>${data.title}</summary><span>${data.content}</span></details>`);
+      editor.insertContent(`<details><summary><h1 class="text-bruh">${data.title}</h1></summary><span>${data.content}</span></details>`);
       api.close();
     }
   });

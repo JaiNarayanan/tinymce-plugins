@@ -13,7 +13,7 @@ const App = () => {
         tinymce.init({
             readonly: readonly,
             external_plugins: {
-                'custom-dropdown': 'https://cdn.jsdelivr.net/gh/JaiNarayanan/tinymce-plugins@plugin-testing/src/editor/plugins/dropdown/plugin.min.js'
+                'custom-dropdown': 'http://127.0.0.1:5500/src/editor/plugins/dropdown/plugin.min.js'
             },
 
             selector: '#tinymce-editor',
@@ -31,7 +31,15 @@ const App = () => {
                         body {
                             background: #fff;
                         }
-
+                        details {
+                            background: #f1f1f1;
+                        }
+                        details > summary {
+                            list-style: none;
+                        }
+                        .text-bruh{
+                            color: red;
+                        }
                         @media (min-width: 840px) {
                             html {
                                 background: #eceef4;
