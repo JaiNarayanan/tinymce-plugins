@@ -17,7 +17,7 @@ var openDialog = function (editor) {
           type: 'textbox',
           name: 'content',
           label: 'Dropdown Content'
-        },
+        }
       ],
     },
     buttons: [
