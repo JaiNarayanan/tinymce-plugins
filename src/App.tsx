@@ -6,25 +6,28 @@ import { ReactComponent as ReturnSVG } from '../../assets/svg/return.svg';
 import { ReactComponent as SaveSVG } from '../../assets/svg/save.svg';
 
 const App = () => {
-  useEffect(() => {
-    // Initialize TinyMCE
-    //@ts-ignore
-    tinymce.init({
-      external_plugins: {
-        'custom-dropdown': 'https://cdn.jsdelivr.net/gh/JaiNarayanan/tinymce-plugins@plugin-testing/src/editor/plugins/dropdown/plugin.min.js'
-      },
-      selector: '#tinymce-editor',
-      height: '100vh',
-      menubar: false,
-      plugins: [
-        "advlist", "autolink",
-        "lists", "link", "image", "charmap", "preview", "anchor", "searchreplace", "visualblocks",
-        "fullscreen", "insertdatetime", "media", "table", "help", "wordcount", "powerpaste", "save",
-      ],	
-      toolbar:"undo redo print save example",
-      toolbar_sticky: true,
-      skin: "bootstrap",
-      content_style: `
+    const [readonly, setReadonly] = useState(false);
+    useEffect(() => {
+        // Initialize TinyMCE
+        //@ts-ignore
+        tinymce.init({
+            readonly: readonly,
+            external_plugins: {
+                'custom-dropdown': 'https://cdn.jsdelivr.net/gh/JaiNarayanan/tinymce-plugins@plugin-testing/src/editor/plugins/dropdown/plugin.min.js'
+            },
+
+            selector: '#tinymce-editor',
+            height: '100vh',
+            menubar: false,
+            plugins: [
+                "advlist", "autolink",
+                "lists", "link", "image", "charmap", "preview", "anchor", "searchreplace", "visualblocks",
+                "fullscreen", "insertdatetime", "media", "table", "help", "wordcount", "powerpaste", "save",
+            ],
+            toolbar:"undo redo print save | blocks fontfamily fontsize | bold italic underline forecolor backcolor | link image addcomment showcomments  | alignleft aligncenter alignright alignjustify lineheight | checklist bullist numlist indent outdent | removeformat | custom-dropdown",
+            toolbar_sticky: true,
+            skin: "bootstrap",
+            content_style: `
                         body {
                             background: #fff;
                         }
@@ -47,18 +50,18 @@ const App = () => {
                             }
                         }
                     `,
-      // icons: "material",
+            // icons: "material",
 
 
-      // Add any TinyMCE configuration options here
-    });
+            // Add any TinyMCE configuration options here
+        });
 
-    // Cleanup on component unmount
-    return () => {
-    //@ts-ignore
-      tinymce.remove('#tinymce-editor');
-    };
-  }, []); 
+        // Cleanup on component unmount
+        return () => {
+            //@ts-ignore
+            tinymce.remove('#tinymce-editor');
+        };
+    }, [readonly]);
     const editorRef = useRef(null);
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
@@ -86,13 +89,12 @@ const App = () => {
     return (
         <div>
             <div className="h-[5vh] w-full flex ">
-                {/* <button onClick={() => { editorRef.current.getContent() == content ? navigate(`/topic/edit/${topicId}`) : openModal() }} className="z-10 text-center w-3/12 flex-initial flex bg-blue-600 hover:bg-blue-700 uppercase py-2 justify-center">
-                    <ReturnSVG fill="#ffffff" height="1.5rem" width="1.5rem" />
-                    <h1 className="leading-7 ml-3 text-base text-white font-medium">Return to Topic</h1>
+                {/* <button className="z-10 text-center w-3/12 flex-initial flex bg-blue-600 hover:bg-blue-700 uppercase py-2 justify-center">
+                    <h1 className="leading-7 ml-3 text-base text-white font-medium">Preview</h1>
                 </button> */}
-                {/* <button onClick={saveContent} className="z-10 text-center w-[3.5rem] flex-initial flex bg-[#ECEEF4] hover:bg-[#e1e2e8] uppercase py-2 justify-center">
-                    <SaveSVG fill="#ECEEF4" height="1.5rem" width="1.5rem" />
-                </button> */}
+                <button onClick={() => setReadonly(!readonly)} className="z-10 text-center w-[3.5rem] flex-initial flex bg-[#ECEEF4] hover:bg-[#e1e2e8] uppercase py-2 justify-center">
+                    Preview
+                </button>
             </div>
             <textarea id="tinymce-editor"></textarea>
             {/* <Editor

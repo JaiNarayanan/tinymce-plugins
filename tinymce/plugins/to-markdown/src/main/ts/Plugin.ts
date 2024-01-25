@@ -11,12 +11,12 @@ var openDialog = function (editor) {
         {
           type: 'input',
           name: 'title',
-          label: 'Title'
+          label: 'Dropdown Title'
         },
         {
-          type: 'input',
-          name: 'title2',
-          label: 'Title2'
+          type: 'textbox',
+          name: 'content',
+          label: 'Dropdown Content'
         },
       ],
     },
@@ -35,7 +35,7 @@ var openDialog = function (editor) {
       var data = api.getData();
       console.log(data)
       /* Insert content when the window form is submitted */
-      editor.insertContent('<h1>I HOPE THIS IS A TITLE</h1> <details><summary>Click to toggle</summary><span>Oh, hello</span></details>' + data.title);
+      editor.insertContent(`<details><summary>${data.title}</summary><span>${data.content}</span></details>`);
       api.close();
     }
   });
